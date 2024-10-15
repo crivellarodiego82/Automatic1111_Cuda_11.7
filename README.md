@@ -7,6 +7,20 @@ I pesi devono essere copiati nella cartella /data/weights/ del container o del s
 
 Queste modifiche garantiranno che il setup utilizzi l'utente server e i percorsi /home/server/.
 
+
+Costruzione dell'immagine Docker:
+sudo docker build -t nome_tua_immagine .
+
+Avvio del Container:
+docker run -d --gpus all -p 7860:7860 nome_tua_immagine
+
+Verifica (verificare che i pesi siano stati copiati correttamente accedendo al container):
+docker exec -it <nome_container> bash
+ls /home/server/stable-diffusion-webui/models/Stable-diffusion/
+
+
+Modifiche:
+
 Copia direttamente dal sistema host al container:
 Se vuoi copiare file dal sistema host al container mentre il container è in esecuzione, puoi utilizzare il comando docker cp
 docker run -d --name my_container my_image
